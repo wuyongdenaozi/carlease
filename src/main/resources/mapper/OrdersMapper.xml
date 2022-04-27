@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.carlease.repository.OrdersRepository">
+
+    <select id="getOrdersByFlag" resultType="com.demo.carlease.entity.Orders">
+        SELECT
+            id,
+            user_id,
+            car_id,
+            date,
+            price,
+            flag,
+            create_datetime,
+            update_datetime,
+            delete_flag
+        FROM orders
+        WHERE
+            flag = FALSE AND
+            delete_flag = FALSE
+    </select>
+
+    <select id="getAllOrders" resultType="com.demo.carlease.vo.OrdersVO">
+        SELECT
+            o.id,
+            o.user_id,
+            u.nick as userName,
+            o.car_id,
+            c.name as carName,
+            o.date,
+            o.price,
+            o.flag,
+            o.create_datetime as orderDatetime
+        FROM
+            orders as o
+            LEFT JOIN car as c
+                ON o.car_id = c.id
+            LEFT JOIN user as u
+                ON o.user_id = u.id
+        WHERE
+            o.delete_flag = FALSE
+    </select>
+
+    <select id="getOrdersByCarId" resultType="com.demo.carlease.vo.OrdersVO">
+        SELECT
+            o.id,
+            o.user_id,
+            u.nick as userName,
+            o.car_id,
+            c.name as carName,
+            o.date,
+            o.price,
+            o.flag,
+            o.create_datetime as orderDatetime
+        FROM
+            orders as o
+                LEFT JOIN car as c
+                          ON o.car_id = c.id
+                LEFT JOIN user as u
+                          ON o.user_id = u.id
+        WHERE
+            o.delete_flag = FALSE AND
+            o.car_id = #{carId}
+    </select>
+
+    <select id="getOrdersByUserId" resultType="com.demo.carlease.vo.OrdersVO">
+        SELECT
+            o.id,
+            o.user_id,
+            u.nick as userName,
+            o.car_id,
+            c.name as carName,
+            o.date,
+            o.price,
+            o.flag,
+            o.create_datetime as orderDatetime
+        FROM
+            orders as o
+                LEFT JOIN car as c
+                          ON o.car_id = c.id
+                LEFT JOIN user as u
+                          ON o.user_id = u.id
+        WHERE
+            o.delete_flag = FALSE AND
+            o.user_id = #{userId}
+    </select>
+</mapper>
