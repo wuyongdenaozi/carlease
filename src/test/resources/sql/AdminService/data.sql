@@ -1,0 +1,1 @@
+insert into admin values (1, 'admin', 'admin', '2021-12-12 12:12:12', '2021-12-12 12:12:12', 0);

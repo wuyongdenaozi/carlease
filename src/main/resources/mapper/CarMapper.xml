@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.carlease.repository.CarRepository">
+
+    <select id="getAll" resultType="com.demo.carlease.vo.CarVO">
+        SELECT
+            c.id as id,
+            c.name as name,
+            c.address as address,
+            c.price as price,
+            u.id as user_id,
+            u.nick as user_nick,
+            u.phone as user_phone,
+            ct.id as type_id,
+            ct.name as type_name,
+            c.flag as flag,
+            c.number as number,
+            cd.describes as describes,
+            cd.img as img
+        FROM
+            car c
+            LEFT JOIN car_type ct on ct.id = c.type_id
+            LEFT JOIN user u on u.id = c.user_id
+            LEFT JOIN car_details cd on c.id = cd.car_id
+        WHERE
+            c.delete_flag = 0
+    </select>
+
+    <select id="getCarsOnHot" resultType="com.demo.carlease.vo.CarVO">
+        SELECT
+            c.id as id,
+            c.name as name,
+            c.address as address,
+            c.price as price,
+            u.id as user_id,
+            u.nick as user_nick,
+            u.phone as user_phone,
+            ct.id as type_id,
+            ct.name as type_name,
+            c.flag as flag,
+            c.number as number,
+            cd.describes as describes,
+            cd.img as img
+        FROM
+            car c
+            LEFT JOIN car_type ct ON c.type_id = ct.id
+            LEFT JOIN user u on c.user_id = u.id
+            LEFT JOIN car_details cd on c.id = cd.car_id
+        WHERE
+            c.delete_flag = 0
+        ORDER BY
+            c.update_datetime DESC
+        LIMIT 5
+    </select>
+
+    <select id="getCarsOnCount" resultType="com.demo.carlease.vo.CarVO">
+        SELECT
+            c.id as id,
+            c.name as name,
+            c.address as address,
+            c.price as price,
+            u.id as user_id,
+            u.nick as user_nick,
+            u.phone as user_phone,
+            ct.id as type_id,
+            ct.name as type_name,
+            c.flag as flag,
+            c.number as number,
+            cd.describes as describes,
+            cd.img as img
+        FROM
+            car c
+            LEFT JOIN car_type ct ON c.type_id = ct.id
+            LEFT JOIN user u on c.user_id = u.id
+            LEFT JOIN car_details cd on c.id = cd.car_id
+        WHERE
+            c.delete_flag = 0
+        ORDER BY
+            c.number DESC
+        LIMIT 5
+    </select>
+
+    <select id="getCarById" resultType="com.demo.carlease.vo.CarVO">
+        SELECT
+            c.id as id,
+            c.name as name,
+            c.address as address,
+            c.price as price,
+            u.id as user_id,
+            u.nick as user_nick,
+            u.phone as user_phone,
+            ct.id as type_id,
+            ct.name as type_name,
+            c.flag as flag,
+            c.number as number,
+            cd.describes as describes,
+            cd.img as img
+        FROM
+            car c
+                LEFT JOIN car_type ct on ct.id = c.type_id
+                LEFT JOIN user u on u.id = c.user_id
+                LEFT JOIN car_details cd on c.id = cd.car_id
+        WHERE
+            c.id = #{carId} AND
+            c.delete_flag = 0
+    </select>
+
+    <select id="getCarsOnUserId" resultType="com.demo.carlease.vo.CarVO">
+        SELECT
+            c.id as id,
+            c.name as name,
+            c.address as address,
+            c.price as price,
+            u.id as user_id,
+            u.nick as user_nick,
+            u.phone as user_phone,
+            ct.id as type_id,
+            ct.name as type_name,
+            c.flag as flag,
+            c.number as number,
+            cd.describes as describes,
+            cd.img as img
+        FROM
+            car c
+                LEFT JOIN car_type ct on ct.id = c.type_id
+                LEFT JOIN user u on u.id = c.user_id
+                LEFT JOIN car_details cd on c.id = cd.car_id
+        WHERE
+            u.id = #{userId} AND
+            c.delete_flag = 0
+    </select>
+
+</mapper>

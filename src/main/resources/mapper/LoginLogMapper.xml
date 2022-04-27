@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.carlease.repository.LoginLogRepository">
+
+    <select id="getAll" resultType="com.demo.carlease.vo.LoginLogVO">
+        SELECT
+            l.id,
+            a.username,
+            a.username as userNick,
+            l.login_datetime
+        FROM login_log as l LEFT JOIN admin a on l.user_id = a.id
+        WHERE l.delete_flag = FALSE
+    </select>
+</mapper>

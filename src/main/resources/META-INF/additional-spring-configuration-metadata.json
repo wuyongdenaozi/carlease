@@ -1,0 +1,19 @@
+{
+  "properties": [
+    {
+      "name": "cors.access-control-allow-headers",
+      "type": "java.lang.String",
+      "description": "Description for cors.access-control-allow-headers."
+    },
+    {
+      "name": "cors.access-control-allow-methods",
+      "type": "java.lang.String",
+      "description": "Description for cors.access-control-allow-methods."
+    },
+    {
+      "name": "cors.access-control-allow-origins",
+      "type": "java.lang.String",
+      "description": "Description for cors.access-control-allow-origins."
+    }
+  ]
+}
