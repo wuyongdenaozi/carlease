@@ -55,7 +55,7 @@ public class CarServiceImpl extends ServiceImpl<CarRepository, Car> implements C
         this.refreshCarInfo();
         type = type.toLowerCase();
 
-        List<CarVO> cars = new ArrayList<>();
+        List<CarVO> cars;
 
         switch (type) {
             case "hot":
@@ -68,11 +68,6 @@ public class CarServiceImpl extends ServiceImpl<CarRepository, Car> implements C
                 cars = carRepository.getAll();
                 break;
         }
-//        List<CarVO> cars = switch (type) {
-//            case "hot" -> carRepository.getCarsOnHot();
-//            case "count" -> carRepository.getCarsOnCount();
-//            default -> carRepository.getAll();
-//        };
         return updateCarImg(cars);
     }
 
