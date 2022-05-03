@@ -48,10 +48,27 @@ public interface CarService extends IService<Car> {
 
     /**
      * 修改汽车租赁结果
-     * @param carId
-     * @return
+     * @param carId 汽车 id
+     * @return 修改结果
      */
     boolean buyCar(Long carId);
 
+    /**
+     * 刷新汽车状态
+     */
     void refreshCarInfo();
+
+    /**
+     * 修改汽车状态为维修中
+     * @param id 汽车 id
+     * @return 修改结果
+     */
+    boolean deleteByCarId(Long id);
+
+    /**
+     * 恢复汽车的维修状态
+     * @param id 汽车 id
+     * @return 修改结果
+     */
+    boolean reDelete(Long id);
 }

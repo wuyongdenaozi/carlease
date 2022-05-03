@@ -1,6 +1,7 @@
 package com.demo.carlease.controller;
 
 import com.demo.carlease.dto.DeleteCarsInfo;
+import com.demo.carlease.dto.ReDeleteCarsInfo;
 import com.demo.carlease.exception.dto.CarDTO;
 import com.demo.carlease.exception.dto.CarUpdateDTO;
 import com.demo.carlease.exception.ValidatorException;
@@ -35,7 +36,7 @@ public class CarController {
     /**
      * 获取所有汽车数据方法
      *
-     * @return
+     * @return 汽车信息集合
      */
     @GetMapping
     public List<CarVO> findAllCar() {
@@ -45,7 +46,7 @@ public class CarController {
     /**
      * 获取当前新上市汽车前五条记录
      *
-     * @return
+     * @return 汽车信息集合
      */
     @GetMapping("/hot")
     public List<CarVO> findAllCarByHot() {
@@ -55,7 +56,7 @@ public class CarController {
     /**
      * 获取租赁次数最多的汽车前五条记录
      *
-     * @return
+     * @return 汽车信息集合
      */
     @GetMapping("/count")
     public List<CarVO> findAllCarByCount() {
@@ -65,8 +66,8 @@ public class CarController {
     /**
      * 通过汽车编号获取指定汽车信息
      *
-     * @param carId
-     * @return
+     * @param carId 汽车 id
+     * @return 汽车信息
      */
     @GetMapping("/{carId}")
     public CarVO findCar(@PathVariable("carId") Long carId) {
@@ -76,7 +77,7 @@ public class CarController {
     /**
      * 获取当前用户的所有汽车信息
      *
-     * @return
+     * @return 汽车信息集合
      */
     @GetMapping("/user/{userId}")
     public List<CarVO> findAllCarByUser(@PathVariable("userId") Long userId) {
@@ -85,8 +86,8 @@ public class CarController {
 
     /**
      * 添加新的汽车信息
-     * @param validator
-     * @return
+     * @param validator 汽车信息
+     * @return 新增结果
      */
     @PostMapping
     public boolean addCar(@RequestBody @Validated CarDTO validator, BindingResult result) {
@@ -104,6 +105,10 @@ public class CarController {
         return carService.updateCarInfo(validator);
     }
 
+    /**
+     * 新增汽车维修状态变更 API
+     * @param carsInfo 汽车 id 集合
+     */
     @PostMapping("/del")
     public void deleteCars(@RequestBody DeleteCarsInfo carsInfo) {
         if (Objects.nonNull(carsInfo) && Objects.nonNull(carsInfo.getCarIdList()) && carsInfo.getCarIdList().size() != 0) {
@@ -113,7 +118,23 @@ public class CarController {
 
     @DeleteMapping("/{id}")
     public boolean deleteCar(@PathVariable("id") Long id) {
-        return carService.removeById(id);
+        return carService.deleteByCarId(id);
+    }
+
+    /**
+     * 新增汽车维修状态恢复 API
+     * @param carsInfo 汽车 id 集合
+     */
+    @PostMapping("/redel")
+    public void reDeleteCars(@RequestBody ReDeleteCarsInfo carsInfo) {
+        if (Objects.nonNull(carsInfo) && Objects.nonNull(carsInfo.getCarIdList()) && carsInfo.getCarIdList().size() != 0) {
+            carsInfo.getCarIdList().forEach(this::reDeleteCar);
+        }
+    }
+
+    @PostMapping("/redel/{id}")
+    public boolean reDeleteCar(@PathVariable("id") Long id) {
+        return carService.reDelete(id);
     }
 
 }

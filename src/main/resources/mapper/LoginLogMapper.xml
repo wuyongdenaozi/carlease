@@ -5,10 +5,10 @@
     <select id="getAll" resultType="com.demo.carlease.vo.LoginLogVO">
         SELECT
             l.id,
-            a.username,
-            a.username as userNick,
+            u.username,
+            u.nick as userNick,
             l.login_datetime
-        FROM login_log as l LEFT JOIN admin a on l.user_id = a.id
+        FROM login_log as l LEFT JOIN user u on l.user_id = u.id
         WHERE l.delete_flag = FALSE
     </select>
 </mapper>

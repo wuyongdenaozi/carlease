@@ -32,11 +32,6 @@ public class AdminServiceImpl extends ServiceImpl<AdminRepository, Admin> implem
         wrapper.lambda().eq(Admin::getUsername, validator.getUsername())
                 .eq(Admin::getPassword, validator.getPassword());
         Admin admin = getOne(wrapper);
-        if (Objects.nonNull(admin)) {
-            loginLogService.addLoginLog(admin.getId());
-            return true;
-        } else {
-            return false;
-        }
+        return Objects.nonNull(admin);
     }
 }

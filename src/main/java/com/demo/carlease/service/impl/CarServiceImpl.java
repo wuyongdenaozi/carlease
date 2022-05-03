@@ -55,7 +55,7 @@ public class CarServiceImpl extends ServiceImpl<CarRepository, Car> implements C
         this.refreshCarInfo();
         type = type.toLowerCase();
 
-        List<CarVO> cars = new ArrayList<>();
+        List<CarVO> cars;
 
         switch (type) {
             case "hot":
@@ -68,11 +68,6 @@ public class CarServiceImpl extends ServiceImpl<CarRepository, Car> implements C
                 cars = carRepository.getAll();
                 break;
         }
-//        List<CarVO> cars = switch (type) {
-//            case "hot" -> carRepository.getCarsOnHot();
-//            case "count" -> carRepository.getCarsOnCount();
-//            default -> carRepository.getAll();
-//        };
         return updateCarImg(cars);
     }
 
@@ -101,7 +96,7 @@ public class CarServiceImpl extends ServiceImpl<CarRepository, Car> implements C
         Car car = new Car();
         BeanUtils.copyProperties(validator, car);
         car.setNumber(0);
-        car.setFlag(false);
+        car.setFlag(0);
         car.setCreateDatetime(LocalDateTime.now());
         boolean result = this.save(car);
         if (result) {
@@ -141,7 +136,9 @@ public class CarServiceImpl extends ServiceImpl<CarRepository, Car> implements C
         this.refreshCarInfo();
         Car car = getById(carId);
         LambdaUpdateWrapper<Car> wrapper = new LambdaUpdateWrapper<>();
-        wrapper.eq(Car::getId, carId).set(Car::getFlag, true).set(Car::getNumber, car.getNumber() + 1);
+        wrapper.eq(Car::getId, carId)
+                .set(Car::getFlag, 1)
+                .set(Car::getNumber, car.getNumber() + 1);
         return this.update(wrapper);
     }
 
@@ -154,10 +151,44 @@ public class CarServiceImpl extends ServiceImpl<CarRepository, Car> implements C
                 // 订单已经完成
                 ordersService.finish(order.getId());
                 LambdaUpdateWrapper<Car> wrapper = new LambdaUpdateWrapper<>();
-                wrapper.eq(Car::getId, order.getCarId()).set(Car::getFlag, false);
+                wrapper.eq(Car::getId, order.getCarId())
+                        .eq(Car::getFlag, 1)
+                        .set(Car::getFlag, 0);
                 this.update(wrapper);
             }
         });
+    }
+
+    @Override
+    public boolean deleteByCarId(Long id) {
+        // 验证当前汽车 id 有效性
+        if (Objects.isNull(this.getById(id))) {
+            return false;
+        }
+
+        LambdaUpdateWrapper<Car> wrapper = new LambdaUpdateWrapper<>();
+        wrapper.eq(Car::getId, id)
+                .eq(Car::getFlag, 0)
+                .set(Car::getFlag, 2)
+                .set(Car::getUpdateDatetime, LocalDateTime.now());
+
+        return this.update(wrapper);
+    }
+
+    @Override
+    public boolean reDelete(Long id) {
+        // 验证当前汽车 id 有效性
+        if (Objects.isNull(this.getById(id))) {
+            return false;
+        }
+
+        LambdaUpdateWrapper<Car> wrapper = new LambdaUpdateWrapper<>();
+        wrapper.eq(Car::getId, id)
+                .eq(Car::getFlag, 2)
+                .set(Car::getFlag, 0)
+                .set(Car::getUpdateDatetime, LocalDateTime.now());
+
+        return this.update(wrapper);
     }
 
 

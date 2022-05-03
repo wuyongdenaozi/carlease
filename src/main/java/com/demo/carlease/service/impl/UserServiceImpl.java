@@ -71,7 +71,7 @@ public class UserServiceImpl extends ServiceImpl<UserRepository, User> implement
         UserVO result = new UserVO();
         BeanUtils.copyProperties(user, result);
         // 保存登录日志
-//   loginLogService.addLoginLog(result.getId());
+        loginLogService.addLoginLog(result.getId());
         // 返回登录用户信息
         return result;
     }
@@ -119,7 +119,7 @@ public class UserServiceImpl extends ServiceImpl<UserRepository, User> implement
         if (Objects.nonNull(validator.getEmail())) {
             user.setEmail(validator.getEmail());
         }
-        Boolean result = this.updateById(user);
+        boolean result = this.updateById(user);
         if (result) {
             UserVO u = new UserVO();
             BeanUtils.copyProperties(this.getById(validator.getId()), u);
