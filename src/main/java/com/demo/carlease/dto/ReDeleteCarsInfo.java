@@ -6,12 +6,14 @@ import java.util.List;
 
 /**
  * <p>
- *     新增汽车维修状态
+ *     恢复汽车维修状态
  * </p>
+ * <p>create file on 2022/5/3</p>
+ *
+ * @author TierneyJohn
  */
 @Data
-public class DeleteCarsInfo {
+public class ReDeleteCarsInfo {
 
     private List<Long> carIdList;
-
 }

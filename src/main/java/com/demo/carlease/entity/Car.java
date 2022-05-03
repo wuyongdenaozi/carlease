@@ -52,7 +52,7 @@ public class Car extends BaseEntity {
      * 是否租赁中
      */
     @TableField("flag")
-    private Boolean flag;
+    private Integer flag;
 
     /**
      * 租赁次数

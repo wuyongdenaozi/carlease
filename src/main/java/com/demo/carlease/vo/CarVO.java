@@ -60,7 +60,7 @@ public class CarVO {
     /**
      * 是否租赁中
      */
-    private Boolean flag;
+    private Integer flag;
 
     /**
      * 租赁次数
