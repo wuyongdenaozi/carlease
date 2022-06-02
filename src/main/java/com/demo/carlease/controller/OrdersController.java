@@ -1,7 +1,7 @@
 package com.demo.carlease.controller;
 
 
-import com.demo.carlease.exception.dto.OrdersDTO;
+import com.demo.carlease.dto.OrdersDTO;
 import com.demo.carlease.exception.ValidatorException;
 import com.demo.carlease.service.OrdersService;
 import com.demo.carlease.vo.OrdersVO;
@@ -46,7 +46,7 @@ public class OrdersController {
 
     /**
      * 获取所有订单方法
-     * @return
+     * @return 所有订单
      */
     @GetMapping
     public List<OrdersVO> getOrders() {
@@ -56,7 +56,7 @@ public class OrdersController {
     /**
      * 通过用户 id 获取所有订单
      *
-     * @return
+     * @return 所有订单信息
      */
     @GetMapping("user/{userId}")
     public List<OrdersVO> getOrdersByUserId(@PathVariable("userId") Long userId) {
@@ -65,7 +65,7 @@ public class OrdersController {
     /**
      * 通过汽车 id 获取所有订单
      *
-     * @return
+     * @return 所有订单信息
      */
     @GetMapping("car/{carId}")
     public List<OrdersVO> getOrdersByCarId(@PathVariable("carId") Long carId) {

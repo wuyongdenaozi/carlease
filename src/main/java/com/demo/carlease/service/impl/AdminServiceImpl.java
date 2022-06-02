@@ -1,7 +1,7 @@
 package com.demo.carlease.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.demo.carlease.exception.dto.LoginDTO;
+import com.demo.carlease.dto.LoginDTO;
 import com.demo.carlease.entity.Admin;
 import com.demo.carlease.repository.AdminRepository;
 import com.demo.carlease.service.AdminService;

@@ -2,9 +2,9 @@ package com.demo.carlease.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.demo.carlease.exception.dto.LoginDTO;
-import com.demo.carlease.exception.dto.RegisterDTO;
-import com.demo.carlease.exception.dto.UserInfoDTO;
+import com.demo.carlease.dto.LoginDTO;
+import com.demo.carlease.dto.RegisterDTO;
+import com.demo.carlease.dto.UserInfoDTO;
 import com.demo.carlease.entity.User;
 import com.demo.carlease.exception.UserException;
 import com.demo.carlease.repository.UserRepository;
@@ -118,6 +118,10 @@ public class UserServiceImpl extends ServiceImpl<UserRepository, User> implement
         // 修改用户邮箱
         if (Objects.nonNull(validator.getEmail())) {
             user.setEmail(validator.getEmail());
+        }
+        // 修改用户身份证号
+        if (Objects.nonNull(validator.getCd())) {
+            user.setCd(validator.getCd());
         }
         boolean result = this.updateById(user);
         if (result) {

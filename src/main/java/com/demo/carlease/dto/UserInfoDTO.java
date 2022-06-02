@@ -1,4 +1,4 @@
-package com.demo.carlease.exception.dto;
+package com.demo.carlease.dto;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
@@ -39,5 +39,11 @@ public class UserInfoDTO {
      */
     @Email(message = "邮箱格式不正确")
     private String email;
+
+    /**
+     * 用户身份证号
+     */
+    @Length(min = 18, max = 18)
+    private String cd;
 
 }

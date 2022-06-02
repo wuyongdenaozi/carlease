@@ -1,7 +1,7 @@
 package com.demo.carlease.controller;
 
 
-import com.demo.carlease.exception.dto.LoginDTO;
+import com.demo.carlease.dto.LoginDTO;
 import com.demo.carlease.exception.ValidatorException;
 import com.demo.carlease.service.AdminService;
 import org.springframework.validation.BindingResult;

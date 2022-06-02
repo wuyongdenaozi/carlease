@@ -1,7 +1,7 @@
 package com.demo.carlease.controller;
 
 
-import com.demo.carlease.exception.dto.CarTypeDTO;
+import com.demo.carlease.dto.CarTypeDTO;
 import com.demo.carlease.exception.ValidatorException;
 import com.demo.carlease.service.CarTypeService;
 import com.demo.carlease.vo.CarTypeVO;
@@ -32,7 +32,7 @@ public class CarTypeController {
 
     /**
      * 获取所有汽车类型方法
-     * @return
+     * @return 所有汽车类型
      */
     @GetMapping
     public List<CarTypeVO> findAllCarType() {
@@ -42,8 +42,8 @@ public class CarTypeController {
     /**
      * 新增汽车类型方法
      *
-     * @param validator
-     * @return
+     * @param validator 新增汽车类型
+     * @return 新增结果
      */
     @PostMapping
     public boolean addCarType(@RequestBody @Validated CarTypeDTO validator, BindingResult result) {

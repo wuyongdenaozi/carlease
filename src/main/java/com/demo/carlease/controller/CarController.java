@@ -2,8 +2,8 @@ package com.demo.carlease.controller;
 
 import com.demo.carlease.dto.DeleteCarsInfo;
 import com.demo.carlease.dto.ReDeleteCarsInfo;
-import com.demo.carlease.exception.dto.CarDTO;
-import com.demo.carlease.exception.dto.CarUpdateDTO;
+import com.demo.carlease.dto.CarDTO;
+import com.demo.carlease.dto.CarUpdateDTO;
 import com.demo.carlease.exception.ValidatorException;
 import com.demo.carlease.service.CarService;
 import com.demo.carlease.vo.CarVO;

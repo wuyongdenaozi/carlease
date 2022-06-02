@@ -48,5 +48,9 @@ public class User extends BaseEntity {
     @TableField("email")
     private String email;
 
-
+    /**
+     * 用户身份证号
+     */
+    @TableField("cd")
+    private String cd;
 }
