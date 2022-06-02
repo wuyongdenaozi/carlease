@@ -1,8 +1,8 @@
 package com.demo.carlease.service;
 
-import com.demo.carlease.exception.dto.LoginDTO;
-import com.demo.carlease.exception.dto.RegisterDTO;
-import com.demo.carlease.exception.dto.UserInfoDTO;
+import com.demo.carlease.dto.LoginDTO;
+import com.demo.carlease.dto.RegisterDTO;
+import com.demo.carlease.dto.UserInfoDTO;
 import com.demo.carlease.exception.UserException;
 import com.demo.carlease.vo.UserVO;
 import org.junit.jupiter.api.Test;

@@ -1,6 +1,6 @@
 package com.demo.carlease.service.impl;
 
-import com.demo.carlease.exception.dto.CarTypeDTO;
+import com.demo.carlease.dto.CarTypeDTO;
 import com.demo.carlease.entity.CarType;
 import com.demo.carlease.repository.CarTypeRepository;
 import com.demo.carlease.service.CarTypeService;

@@ -32,4 +32,9 @@ public class UserVO {
      * 用户邮箱
      */
     private String email;
+
+    /**
+     * 用户身份证号
+     */
+    private String cd;
 }

@@ -1,7 +1,7 @@
 package com.demo.carlease.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.demo.carlease.exception.dto.OrdersDTO;
+import com.demo.carlease.dto.OrdersDTO;
 import com.demo.carlease.entity.Orders;
 import com.demo.carlease.vo.OrdersVO;
 
@@ -42,7 +42,7 @@ public interface OrdersService extends IService<Orders> {
      * 订单完成方法
      *
      * @param orderId
-     * @return
+     * @return 完成结果
      */
     boolean finish(Long orderId);
 

@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.demo.carlease.exception.dto.CarDTO;
-import com.demo.carlease.exception.dto.CarUpdateDTO;
+import com.demo.carlease.dto.CarDTO;
+import com.demo.carlease.dto.CarUpdateDTO;
 import com.demo.carlease.entity.Car;
 import com.demo.carlease.entity.Orders;
 import com.demo.carlease.repository.CarRepository;
@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package com.demo.carlease.exception.dto;
+package com.demo.carlease.dto;
 
 import lombok.Data;
 

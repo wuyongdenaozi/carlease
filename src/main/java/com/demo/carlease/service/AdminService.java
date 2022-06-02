@@ -1,6 +1,6 @@
 package com.demo.carlease.service;
 
-import com.demo.carlease.exception.dto.LoginDTO;
+import com.demo.carlease.dto.LoginDTO;
 import com.demo.carlease.entity.Admin;
 import com.baomidou.mybatisplus.extension.service.IService;
 

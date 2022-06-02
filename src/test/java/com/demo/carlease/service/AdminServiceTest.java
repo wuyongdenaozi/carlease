@@ -1,6 +1,6 @@
 package com.demo.carlease.service;
 
-import com.demo.carlease.exception.dto.LoginDTO;
+import com.demo.carlease.dto.LoginDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

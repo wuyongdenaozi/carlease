@@ -1,7 +1,7 @@
 package com.demo.carlease.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.demo.carlease.exception.dto.CarTypeDTO;
+import com.demo.carlease.dto.CarTypeDTO;
 import com.demo.carlease.entity.CarType;
 import com.demo.carlease.vo.CarTypeVO;
 
